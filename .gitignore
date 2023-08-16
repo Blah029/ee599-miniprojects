@@ -1,4 +1,6 @@
 # Exclude
+# Folders
+gpt
 # VSCode files
 **__pycache__
 **tempCodeRunnerFile.py
