@@ -2,7 +2,7 @@
 
 Group:
     - Warnakulasuriya R.    E/17/371
-    -                       E/17/372
+    - Warnasooriya WAVG     E/17/372
     -
     -
     -
