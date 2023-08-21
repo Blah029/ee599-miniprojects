@@ -2,7 +2,7 @@
 
 Group:
     - Warnakulasuriya R.    E/17/371
-    -                       E/17/372
+    - Warnasooriya WAVG     E/17/372
     -
     -
     -
@@ -31,5 +31,6 @@ logger.debug(f"seconds: {len(signal)/f_s}")
 logger.debug(f"beats:   {len(signal)/f_s/60*bpm}")
 logger.debug(f"bars:    {len(signal)/f_s/60*bpm/beatsperbar}")
 logger.debug(f"window:  {window_size} samples")
+
 
 
