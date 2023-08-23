@@ -31,7 +31,7 @@ in_path = "data"
 in_file = "sarigamapa.wav"
 yy, f_s = librosa.load(f"{in_path}\\{in_file}")
 ## Properties
-pole_count = 39
+pole_count = 32
 window_size = int(f_s*0.1)
 window_gap = int(window_size*0.25)
 window_count = math.floor((len(yy)-window_size)/window_gap) + 1
