@@ -24,8 +24,10 @@ logger = logging.getLogger("ee599-a1")
 logger.setLevel(logging.DEBUG)
 
 ## Read wavefile
-in_path = "C:\\Users\\User Files\\Documents\\University\\Misc\\4th Year Work\\EE599\\EE599 Activity 1"
+in_path = "C:\\Users\\User Files\\Documents\\University\\Misc\\4th Year Work\\EE599\\EE599 Activity 1\\Samples"
+# in_path = "data"
 in_file = "Senzawa Minecraft Stream Music.wav"
+# in_file = "sarigamapa.wav"
 f_s, data = io.wavfile.read(f"{in_path}\\{in_file}")
 ## Properties
 bpm = 93
@@ -65,14 +67,9 @@ for i in range(window_count):
         # logger.debug(f"j: {j}, bin: {bin}, binned len: {len(bin_ff)}")
         logger.debug(f"indices shape: {np.array(bin_indices).shape}, sff shape: {sff.shape}")
         # logger.debug(f"avg shape: {avgpower}")
-
 ## Plot
 x_temp = np.arange(0,20,20/len(psd)) ## 1st bin
 fig,ax = plt.subplots(1)
 ax.set_xscale("log")
 ax.plot(x_temp,psd[:,0])
 plt.show()
-
-
-
-
