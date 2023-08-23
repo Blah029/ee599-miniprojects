@@ -4,5 +4,7 @@ gpt
 # VSCode files
 **__pycache__
 **tempCodeRunnerFile.py
+# Aido files
+data/synthesised.wav
 
 # Include

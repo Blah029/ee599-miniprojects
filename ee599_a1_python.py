@@ -16,6 +16,8 @@ import logging
 import math
 import matplotlib.pyplot as plt
 import numpy as np
+import soundfile as sf
+from IPython import display
 from scipy import signal
 
 ## Set up logging
@@ -77,6 +79,6 @@ ax[1].title.set_text("Synthesised Signal")
 ax[1].plot(y_hat)
 ax[2].title.set_text("Variation of Pitch")
 ax[2].plot(pitch)
-plt.show()
-
-
+# plt.show()
+# display.Audio(data=yy, rate=f_s)
+sf.write(f"{in_path}\\synthesised.wav",y_hat,f_s,subtype="PCM_24")
