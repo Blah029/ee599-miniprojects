@@ -72,7 +72,7 @@ for i in range(window_count):
         ax[1,1].stem(f_poles)
 fig,ax = plt.subplots(3, num="Final Observations")
 fig.tight_layout()
-ax[0].title.set_text("Input Signal")
+ax[0].title.set_text("Reference Signal")
 ax[0].plot(yy)
 ax[1].title.set_text("Synthesised Signal")
 ax[1].plot(y_hat)
