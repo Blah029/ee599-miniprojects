@@ -29,29 +29,30 @@ logger.setLevel(logging.DEBUG)
 # in_file = "Senzawa Minecraft Stream Music.wav"
 in_path = "data"
 in_file = "sarigamapa.wav"
-yy, f_s = librosa.load(f"{in_path}\\{in_file}")
+yy,f_s = librosa.load(f"{in_path}\\{in_file}")
 ## Properties
 pole_count = 32
-window_size = int(f_s*0.1)
+window_size = int(f_s*0.1) # 100 ms winodw
 window_gap = int(window_size*0.25)
 window_count = math.floor((len(yy)-window_size)/window_gap) + 1
 logger.debug(f"sample rate:     {f_s} Hz")
 logger.debug(f"samples:         {len(yy)}")
 logger.debug(f"duration:        {len(yy)/f_s} s")
 logger.debug(f"window size:     {window_size} ({window_size/f_s*1000:.0f} ms)")
-logger.debug(f"window gap:      {window_gap}")
-logger.debug(f"window overlap:  {window_size - window_gap} ({window_gap/window_size*100:.0f} %)")
+logger.debug(f"window gap:      {window_gap} ({(window_gap)/window_size*100:.0f} %)")
+logger.debug(f"window overlap:  {window_size - window_gap} ({(window_size - window_gap)/window_size*100:.0f} %)")
 logger.debug(f"winodw count:    {window_count}")
 ## Analyse
 pitch = []
 y_hat = np.zeros_like(yy) 
 for i in range(window_count):
-    y_trimmed = yy[i*window_gap:i*window_gap + window_size]
-    aa = librosa.lpc(y_trimmed, order=pole_count) # coefficients of lpc function
-    xx = np.zeros_like(y_trimmed)
+    y_windowed = yy[i*window_gap:i*window_gap + window_size]
+    # y_windowed = np.hamming(window_size) # windows do not align with notes played
+    aa = librosa.lpc(y_windowed, order=pole_count) # coefficients of lpc function
+    xx = np.zeros_like(y_windowed)
     xx[0] = 1
     y_hat_trimmed = signal.lfilter(np.array([1]),aa,xx)
-    y_hat[i*window_gap:i*window_gap + window_size] = y_hat_trimmed
+    y_hat[i*window_gap:(i*window_gap + window_size)] = y_hat_trimmed
     f_poles = f_s*np.sort(np.abs(np.angle(np.roots(aa))))/(2*np.pi)
     for f_p in f_poles:
         if f_p != 0:
