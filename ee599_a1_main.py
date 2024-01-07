@@ -1,12 +1,5 @@
 """EE599 Activity 1 - Pitch and Spectrum Centroid Detection
 
-Group:
-    - Warnakulasuriya R     E/17/371
-    - Warnasooriya WAVG     E/17/372
-    -
-    -
-    -
-
 References:
     - https://numpy.org/doc/stable/reference/generated/numpy.pad.html
     - https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.spectrogram.html
